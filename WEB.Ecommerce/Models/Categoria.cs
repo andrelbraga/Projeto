@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace UI.Ecommerce.Models
+namespace WEB.Ecommerce.Models
 {
     public class Categoria
     {
@@ -16,6 +14,8 @@ namespace UI.Ecommerce.Models
         [Required]
         [MaxLength(150)]
         public string Descricao { get; set; }
+
+        public virtual ICollection<Produto> Produtos { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

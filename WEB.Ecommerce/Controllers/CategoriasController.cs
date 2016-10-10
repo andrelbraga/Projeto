@@ -11,108 +11,107 @@ using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Controllers
 {
-    public class ClienteController : Controller
+    public class CategoriasController : Controller
     {
         private DataContexto db = new DataContexto();
 
-        // GET: Cliente
+        // GET: Categorias
         public ActionResult Index()
         {
-            return View(db.Cliente.ToList());
+            return View(db.Categoria.ToList());
         }
 
-        // GET: Cliente/Details/5
+        // GET: Categorias/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Cliente/Create
+        // GET: Categorias/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Cliente/Create
+        // POST: Categorias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Log]
-        public ActionResult Create([Bind(Include = "ClienteId,Nome,Sobrenome,Email,Cpf,Celular,Cep,Status,DataCadastro")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "CategoriaId,Tipo,Descricao,DataCadastro")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                db.Cliente.Add(cliente);
+                db.Categoria.Add(categoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Cliente/Edit/5
+        // GET: Categorias/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // POST: Cliente/Edit/5
+        // POST: Categorias/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClienteId,Nome,Sobrenome,Email,Cpf,Celular,Cep,Status,DataCadastro")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "CategoriaId,Tipo,Descricao,DataCadastro")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
+                db.Entry(categoria).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // GET: Cliente/Delete/5
+        // GET: Categorias/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Categoria categoria = db.Categoria.Find(id);
+            if (categoria == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(categoria);
         }
 
-        // POST: Cliente/Delete/5
+        // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Cliente.Find(id);
-            db.Cliente.Remove(cliente);
+            Categoria categoria = db.Categoria.Find(id);
+            db.Categoria.Remove(categoria);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -124,6 +123,23 @@ namespace WEB.Ecommerce.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [ChildActionOnly]
+        public ActionResult CategoriasMenu(int num = 5)
+        {
+            var catego = db.Categoria
+            .OrderByDescending(g => g.Produtos.Count)
+            .Take(num)
+            .ToList();
+            return this.PartialView(catego);
+        }
+
+        public ActionResult Browse(string categoria = "Action")
+        {
+            var cate = db.Categoria.SingleOrDefault(g => g.Tipo == categoria);
+
+            return View(cate);
         }
     }
 }

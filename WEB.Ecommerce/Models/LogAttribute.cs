@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using UI.Ecommerce.Models;
 using WEB.Ecommerce.Data;
 using WEB.Ecommerce.Models;
 

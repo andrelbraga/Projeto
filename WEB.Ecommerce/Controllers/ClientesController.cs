@@ -6,121 +6,112 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using UI.Ecommerce.Models;
 using WEB.Ecommerce.Data;
+using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Controllers
 {
-    public class CarrinhoController : Controller
+    public class ClientesController : Controller
     {
         private DataContexto db = new DataContexto();
 
-        // GET: Carrinho
+        // GET: Clientes
         public ActionResult Index()
         {
-            var carrinho = db.Carrinho.Include(c => c.Cliente).Include(c => c.Produto);
-            return View(carrinho.ToList());
+            return View(db.Cliente.ToList());
         }
 
-        // GET: Carrinho/Details/5
+        // GET: Clientes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrinho carrinho = db.Carrinho.Find(id);
-            if (carrinho == null)
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(carrinho);
+            return View(cliente);
         }
 
-        // GET: Carrinho/Create
+        // GET: Clientes/Create
         public ActionResult Create()
         {
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome");
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome");
             return View();
         }
 
-        // POST: Carrinho/Create
+        // POST: Clientes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CarrinhoId,ClienteId,ProdutoId,Quantidade,DataCadastro")] Carrinho carrinho)
+        public ActionResult Create([Bind(Include = "ClienteId,Nome,Email,Status,DataCadastro")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.Carrinho.Add(carrinho);
+                db.Cliente.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome", carrinho.ClienteId);
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome", carrinho.ProdutoId);
-            return View(carrinho);
+            return View(cliente);
         }
 
-        // GET: Carrinho/Edit/5
+        // GET: Clientes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrinho carrinho = db.Carrinho.Find(id);
-            if (carrinho == null)
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome", carrinho.ClienteId);
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome", carrinho.ProdutoId);
-            return View(carrinho);
+            return View(cliente);
         }
 
-        // POST: Carrinho/Edit/5
+        // POST: Clientes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CarrinhoId,ClienteId,ProdutoId,Quantidade,DataCadastro")] Carrinho carrinho)
+        public ActionResult Edit([Bind(Include = "ClienteId,Nome,Email,Status,DataCadastro")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(carrinho).State = EntityState.Modified;
+                db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome", carrinho.ClienteId);
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome", carrinho.ProdutoId);
-            return View(carrinho);
+            return View(cliente);
         }
 
-        // GET: Carrinho/Delete/5
+        // GET: Clientes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrinho carrinho = db.Carrinho.Find(id);
-            if (carrinho == null)
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-            return View(carrinho);
+            return View(cliente);
         }
 
-        // POST: Carrinho/Delete/5
+        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Carrinho carrinho = db.Carrinho.Find(id);
-            db.Carrinho.Remove(carrinho);
+            Cliente cliente = db.Cliente.Find(id);
+            db.Cliente.Remove(cliente);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

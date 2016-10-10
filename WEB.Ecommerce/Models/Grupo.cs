@@ -11,6 +11,13 @@ namespace WEB.Ecommerce.Models
         public int GrupoId { get; set; }
         public string Tipo { get; set; }
         public string Descricao { get; set; }
+        public bool status { get; set; }
+        public int CodigoId { get; set; }
+     
+
+        public virtual IEnumerable<Cliente> Clientes { get; set; }
+        
+        
 
     }
 }

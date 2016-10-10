@@ -35,10 +35,11 @@ namespace WEB.Ecommerce.Models
         [DisplayName("Disponivel?")]
         public bool Status { get; set; }
 
-        public int ClienteId { get; set; }
+        
 
         //Cliente para sobrescrever lazyload
         public virtual Cliente Cliente { get; set; }
+        public int ClienteId { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

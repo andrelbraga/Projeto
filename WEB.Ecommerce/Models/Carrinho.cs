@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using WEB.Ecommerce.Models;
 
-namespace UI.Ecommerce.Models
+namespace WEB.Ecommerce.Models
 {
     public class Carrinho
     {

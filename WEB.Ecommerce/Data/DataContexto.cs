@@ -4,8 +4,8 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
-using UI.Ecommerce.Models;
 using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Data
@@ -19,6 +19,7 @@ namespace WEB.Ecommerce.Data
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Carrinho> Carrinho { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Grupo> Grupo { get; set; }
         public DbSet<Log> Logs { get; set; }
 
 
@@ -88,17 +89,24 @@ namespace WEB.Ecommerce.Data
                 Property(x => x.Nome)
                     .IsRequired()
                     .HasMaxLength(50);
-
-                Property(x => x.Sobrenome)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
+                
                 Property(x => x.Email)
                     .IsRequired()
                     .HasMaxLength(50);
 
+                //HasRequired(x => x.Grupo)
+                //    .WithMany()
+                //    .HasForeignKey(x => x.GrupoId);
 
-
+            }
+        }
+        public class GrupoConfiguration : EntityTypeConfiguration<Grupo> 
+        {
+            public GrupoConfiguration()
+            {
+                HasKey(x => x.GrupoId);
+                
+               
             }
         }
 
