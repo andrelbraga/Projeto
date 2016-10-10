@@ -36,6 +36,10 @@ namespace WEB.Ecommerce.Models
             };
 
             //Clientes
+            var clientes = new Cliente()
+            {
+
+            };
 
 
         }
