@@ -135,7 +135,7 @@ namespace WEB.Ecommerce.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult CategoriasMenu(int num = 5)
+        public ActionResult CategoriasMenu(int num = 9)
         {
             var catego = db.Categoria
             .OrderByDescending(g => g.Produtos.Count)

@@ -1,12 +1,18 @@
 ﻿@model System.Collections.Generic.IEnumerable<WEB.Ecommerce.Models.Categoria>
 
-<div class="container">
-    <div class="btn-group btn-group-justified">
+
+    <div class="list-group">
+
         @foreach (var categoria in Model)
         {
-            @Html.ActionLink(categoria.Tipo, "Browse", "Produtos", new { Categoria = categoria.Tipo }, new { @class = "btn btn-primary" })
+            <a>  @Html.ActionLink(categoria.Tipo, "Browse", "Produtos", new { Categoria = categoria.Tipo }, new { @class = "list-group-item" }) </a>
         }
 
-        @Html.ActionLink("More...", "Index", "Categorias", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("More...", "Index", "Categorias", null, new { @class = "list-group-item" })
+
+
     </div>
-</div>
+
+
+
+

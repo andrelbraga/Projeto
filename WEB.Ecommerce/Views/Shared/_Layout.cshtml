@@ -6,6 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../Content/shop-homepage.css" rel="stylesheet">
 
 
 </head>
@@ -33,7 +37,7 @@
                 @Html.Partial("_LoginPartial")
 
             </div>
-            @{Html.RenderAction("CategoriasMenu", "Produtos");}
+            @*@{Html.RenderAction("CategoriasMenu", "Produtos");}*@
         </div>
        
     </div>
@@ -48,5 +52,10 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!-- jQuery -->
+    <script src="../../Scripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../Scripts/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,124 +1,179 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 
-<div class="jumbotron">
-    
-        <style>
-            .carousel-inner > .item > img,
-            .carousel-inner > .item > a > img {
-                width: 70%;
-                margin: auto;
-            }
-        </style>
-    
-        <div class="container">
-            <br>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
+<!-- Page Content -->
+    <div class="container">
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img src="http://images.shoptime.io/mktshop/2016/home/0810/Banner_home_124684379.jpg" alt="Chania" width="460" height="345">
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Shop Name</p>
+                
+
+                    @{Html.RenderAction("CategoriasMenu", "Produtos");}
+                  
+                 
+            </div>
+
+            <div class="col-md-9">
+
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://images.shoptime.io/mktshop/2016/home/0810/Banner_home_124684379.jpg" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://ishop1-a.akamaihd.net/mktshop/2016/home/1209/destaque-baixa-iphone.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://images.shoptime.io/mktshop/2016/home/0810/Banner_home_128873636.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://ishop1-a.akamaihd.net/mktshop/2016/home/0810/bh_124488474_08102016.png" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="item">
-                        <img src="http://ishop1-a.akamaihd.net/mktshop/2016/home/1209/destaque-baixa-iphone.png" alt="Chania" width="460" height="345">
-                    </div>
-
-                    <div class="item">
-                        <img src="http://images.shoptime.io/mktshop/2016/home/0810/Banner_home_128873636.png" alt="Flower" width="460" height="345">
-                    </div>
-
-                    <div class="item">
-                        <img src="http://ishop1-a.akamaihd.net/mktshop/2016/home/0810/bh_124488474_08102016.png" alt="Flower" width="460" height="345">
-                    </div>
                 </div>
 
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                <div class="row">
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">Automoveis</a>
+                                </h4>
+                                <p>Categoria de automoveis.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4>
+                            <a href="#">Like this template?</a>
+                        </h4>
+                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
+                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
-   
-</div>
+    </div>
+    
 
-<div class="row">
-    <div class="col-md-4 img-responsive">
-        <h2>Eltronicos</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="https://www.fontecamp.com.br/wp-content/uploads/2013/01/aparelhos-eletronicos.jpg" width="80%"/>
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Informatica">Eletronicos &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Games</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="http://seumundotech.com/wp-content/uploads/2016/02/Games-1.jpg" width="80%" />
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Games">Games &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Produtos Musicais</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="http://www.novonegocio.com.br/wp-content/uploads/2011/12/Como-montar-uma-loja-de-instrumentos-musicais.jpg" width="80%" />
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Produtos%20musicais">Learn more &raquo;</a></p>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-md-4 img-responsive">
-        <h2>Eltronicos</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="https://www.fontecamp.com.br/wp-content/uploads/2013/01/aparelhos-eletronicos.jpg" width="80%" />
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Informatica">Eletronicos &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Games</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="http://seumundotech.com/wp-content/uploads/2016/02/Games-1.jpg" width="80%" />
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Games">Games &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Produtos Musicais</h2>
-        <p>
-            <img style="border: 2px;" alt="Eltronicos" src="http://www.novonegocio.com.br/wp-content/uploads/2011/12/Como-montar-uma-loja-de-instrumentos-musicais.jpg" width="80%" />
-        </p>
-        sdasdasdasdasdasdasd
-        asdasdasdasdasdasdasda
-        asdasdasdasd
-        <p><a class="btn btn-default" href="http://localhost:51337/Categorias/Browse?Categoria=Produtos%20musicais">Learn more &raquo;</a></p>
-    </div>
-</div>
