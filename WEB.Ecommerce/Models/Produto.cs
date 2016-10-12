@@ -29,13 +29,15 @@ namespace WEB.Ecommerce.Models
         [Required(ErrorMessage = "Preencha um Valor")]
         public decimal Preco { get; set; }
 
-        public int Quantidade { get; set; }
 
         //Para verificar se produto está disponivel
         [DisplayName("Disponivel?")]
         public bool Status { get; set; }
 
-        
+
+        //Categoria
+        public virtual Categoria Categoria{ get; set; }
+        public int CategoriaId { get; set; }
 
         //Cliente para sobrescrever lazyload
         public virtual Cliente Cliente { get; set; }

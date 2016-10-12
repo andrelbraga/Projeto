@@ -13,7 +13,7 @@ namespace WEB.Ecommerce.Migrations.DataContexto
         
         string IMigrationMetadata.Id
         {
-            get { return "201610090017167_Logging"; }
+            get { return "201610110612577_Logging"; }
         }
         
         string IMigrationMetadata.Source

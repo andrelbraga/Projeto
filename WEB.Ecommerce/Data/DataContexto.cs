@@ -7,13 +7,17 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using WEB.Ecommerce.Models;
+using System.Data.Entity.Migrations;
 
 namespace WEB.Ecommerce.Data
 {
     public class DataContexto : DbContext
     {
 
-        public DataContexto() : base("Ecommerce") { }
+        public DataContexto() : base("DataContexto")
+        {
+            
+        }
 
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Produto> Produto { get; set; }
@@ -68,13 +72,13 @@ namespace WEB.Ecommerce.Data
             {
                 HasKey(x => x.CarrinhoId);
 
-                HasRequired(x => x.Cliente)
-                    .WithMany()
-                    .HasForeignKey(x => x.ClienteId);
+                //HasRequired(x => x.Cliente)
+                //    .WithMany()
+                //    .HasForeignKey(x => x.ClienteId);
 
-                HasRequired(x => x.Produto)
-                    .WithMany()
-                    .HasForeignKey(x => x.ProdutoId);
+                //HasRequired(x => x.Produto)
+                //    .WithMany()
+                //    .HasForeignKey(x => x.ProdutoId);
 
 
             }

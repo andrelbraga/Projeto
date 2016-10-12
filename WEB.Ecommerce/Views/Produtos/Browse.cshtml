@@ -33,7 +33,7 @@
         @foreach (var item in Model.Produtos)
         {
             <li>
-                @Html.ActionLink(item.Nome, "Details", new { item.ProdutoId })
+                @Html.ActionLink(item.Nome, "Details", new { ID = item.ProdutoId })
             </li>
         }
     </ul>
