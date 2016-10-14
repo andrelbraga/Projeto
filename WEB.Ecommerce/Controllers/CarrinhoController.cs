@@ -14,6 +14,7 @@ namespace WEB.Ecommerce.Controllers
     public class CarrinhoController : Controller
     {
         private DataContexto db = new DataContexto();
+
         // GET: Carrinho
         public ActionResult Index()
         {
@@ -131,6 +132,18 @@ namespace WEB.Ecommerce.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Adcionar(int idCliente, int idProduto)
+        {
+            Carrinho carr = new Carrinho();
+
+            carr.ClienteId = idCliente;
+            carr.ProdutoId = idProduto;
+            
+
+            return View(carr);
+
         }
     }
 }

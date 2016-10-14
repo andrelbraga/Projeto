@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WEB.Ecommerce.Models
@@ -14,6 +15,9 @@ namespace WEB.Ecommerce.Models
         public Produto Produto { get; set; }
 
         public int Quantidade { get; set; }
+
+        public virtual IEnumerable<Produto> Produtos { get; set; }
+        public virtual IEnumerable<Cliente> Clientes { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

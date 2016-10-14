@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -45,5 +46,7 @@ namespace WEB.Ecommerce.Models
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }
+
+        
     }
 }
