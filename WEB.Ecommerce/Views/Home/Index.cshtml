@@ -1,4 +1,4 @@
-﻿
+﻿@model System.Collections.Generic.IEnumerable<WEB.Ecommerce.Models.Categoria>
 
 <!-- Page Content -->
     <div class="container">
@@ -53,111 +53,30 @@
 
                 <div class="row">
 
+                    @foreach (var categoria in Model)
+                    {
+
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
                             <div class="caption">
                                 <h4>
-                                    <a href="#">Automoveis</a>
+                                    <a href="#">@Html.ActionLink(categoria.Tipo, "Browse", new { Controller = "Produtos", Categoria =  categoria.Tipo })</a>
                                 </h4>
-                                <p>Categoria de automoveis.</p>
+                                <p>@categoria.Descricao</p>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>                               
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
+
+                    }
+
+
                     </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/Imagens/Automoveis/CategoriaAutomovel.jpg" width="150" height="150" alt="">
-                            <div class="caption">
-                                <h4>
-                                    <a href="#">Automoveis</a>
-                                </h4>
-                                <p>Categoria de automoveis.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                    
+
+                   
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <h4>

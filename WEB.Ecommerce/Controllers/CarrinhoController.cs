@@ -145,5 +145,19 @@ namespace WEB.Ecommerce.Controllers
             return View(carr);
 
         }
+
+        public ActionResult Criar(int idCliente, int idProduto)
+        {
+            Carrinho carr = new Carrinho();
+
+            carr.ClienteId = idCliente;
+            carr.ProdutoId = idProduto;
+            db.Carrinho.Add(carr);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home", "HomeController" );
+            
+
+        }
     }
 }

@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WEB.Ecommerce.Data;
+using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private DataContexto db = new DataContexto();
+
+        public ActionResult Index(Categoria categoria, string tipo)
         {
-            return View();
+            var cate = db.Categoria.Where(g => g.Tipo != null).ToList();
+
+            return View(cate);
         }
 
         public ActionResult About()
@@ -27,6 +33,6 @@ namespace WEB.Ecommerce.Controllers
             return View();
         }
         //
-       
+        
     }
 }
