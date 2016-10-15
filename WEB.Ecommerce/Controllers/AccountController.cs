@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -147,11 +148,28 @@ namespace WEB.Ecommerce.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string Selected)
         {
+            IEnumerable<string> tipoUsuario = new string[]
+            {
+            "Administrador",
+            "Usuário",
+            "Cliente"
+            };
+
+            ViewBag.Selected = tipoUsuario;
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    NomeUsuario = model.NomeUsuario,
+                    Email = model.Email,
+                    TipoUsuario = model.NomeUsuario
+
+                   
+            };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -423,6 +441,7 @@ namespace WEB.Ecommerce.Controllers
             base.Dispose(disposing);
         }
 
+        
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace WEB.Ecommerce.Models
 {
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -64,6 +67,15 @@ namespace WEB.Ecommerce.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Nome de Usuario")]
+        public string NomeUsuario { get; set; }
+
+        [Required]
+        [Display(Name = "Tipode de Usuário")]
+        public List<string> TipoUsuario { get; set; }
+        
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
