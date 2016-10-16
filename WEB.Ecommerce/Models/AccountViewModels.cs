@@ -48,6 +48,7 @@ namespace WEB.Ecommerce.Models
 
     public class LoginViewModel
     {
+        
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
@@ -64,6 +65,16 @@ namespace WEB.Ecommerce.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Nome de Usuario")]
+        public string NomeUsuario { get; set; }
+
+        [Display(Name = "Vendedor")]
+        public bool Vendedor { get; set; }
+
+        [Display(Name = "Cliente")]
+        public bool Cliente { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
