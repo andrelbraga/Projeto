@@ -9,7 +9,7 @@ namespace WEB.Ecommerce.Migrations.DataContexto
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\DataContexto";
         }
 

@@ -206,15 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610111701415_Profile.cs" />
-    <Compile Include="Migrations\201610111701415_Profile.Designer.cs">
-      <DependentUpon>201610111701415_Profile.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\DataContexto\201610111709504_Initializer.cs" />
-    <Compile Include="Migrations\DataContexto\201610111709504_Initializer.Designer.cs">
-      <DependentUpon>201610111709504_Initializer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\DataContexto\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Carrinho.cs" />
@@ -238,6 +230,33 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\Automoveis\automoveis1.jpeg" />
+    <Content Include="Imagens\Automoveis\automoveis2.jpeg" />
+    <Content Include="Imagens\Automoveis\CategoriaAutomovel.jpg" />
+    <Content Include="Imagens\Brinquedos\brinquedos1.jpeg" />
+    <Content Include="Imagens\Brinquedos\brinquedos2.jpg" />
+    <Content Include="Imagens\Brinquedos\CategoriasBrinquedos.jpeg" />
+    <Content Include="Imagens\Eletrodomesticos\CategoriaEletrodomestico.png" />
+    <Content Include="Imagens\Eletrodomesticos\eletrodomestico2.jpeg" />
+    <Content Include="Imagens\Eletrodomesticos\eletrodomesticos.jpg" />
+    <Content Include="Imagens\Filmes\CategoriaFilmes.jpg" />
+    <Content Include="Imagens\Filmes\filmes1.jpeg" />
+    <Content Include="Imagens\Filmes\filmes2.jpeg" />
+    <Content Include="Imagens\Games\CategoriaGames.jpeg" />
+    <Content Include="Imagens\Games\games1.jpeg" />
+    <Content Include="Imagens\Games\games2.jpeg" />
+    <Content Include="Imagens\Informatica\CategoriaInformatica.jpeg" />
+    <Content Include="Imagens\Informatica\informatica.png" />
+    <Content Include="Imagens\Informatica\informatica1.jpeg" />
+    <Content Include="Imagens\Instrumentos\CategoriaMusica.jpg" />
+    <Content Include="Imagens\Instrumentos\Instrumentos.jpeg" />
+    <Content Include="Imagens\Instrumentos\instrumentos1.jpeg" />
+    <Content Include="Imagens\Livros\CategoriaLivro.jpeg" />
+    <Content Include="Imagens\Livros\livros1.jpeg" />
+    <Content Include="Imagens\Livros\livros2.jpeg" />
+    <Content Include="Imagens\Moveis\CategoriaMoveis.jpg" />
+    <Content Include="Imagens\Moveis\moveis1.jpeg" />
+    <Content Include="Imagens\Moveis\moveis2.jpeg" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -318,15 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Imagens\Automoveis\" />
-    <Folder Include="Imagens\Brinquedos\" />
-    <Folder Include="Imagens\Eletrodomesticos\" />
-    <Folder Include="Imagens\Filmes\" />
-    <Folder Include="Imagens\Games\" />
-    <Folder Include="Imagens\Informatica\" />
-    <Folder Include="Imagens\Instrumentos\" />
-    <Folder Include="Imagens\Livros\" />
-    <Folder Include="Imagens\Moveis\" />
     <Folder Include="System\Data\Entity\Migrations\Model\" />
   </ItemGroup>
   <ItemGroup>
@@ -336,14 +346,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610111701415_Profile.resx">
-      <DependentUpon>201610111701415_Profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\DataContexto\201610111709504_Initializer.resx">
-      <DependentUpon>201610111709504_Initializer.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -15,6 +15,9 @@ namespace WEB.Ecommerce.Models
         [MaxLength(150)]
         public string Descricao { get; set; }
 
+        [ScaffoldColumn(false)]
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<Produto> Produtos { get; set; }
 
         [ScaffoldColumn(false)]
