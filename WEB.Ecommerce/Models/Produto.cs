@@ -24,25 +24,36 @@ namespace WEB.Ecommerce.Models
 
         [Display(Name = "Image link")]
         [DataType(DataType.ImageUrl)]
-        public String ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         [Range(typeof(decimal), "0", "9999999999999")]
         [Required(ErrorMessage = "Preencha um Valor")]
         public decimal Preco { get; set; }
 
-
         //Para verificar se produto está disponivel
         [DisplayName("Disponivel?")]
         public bool Status { get; set; }
 
-
-        //Categoria
-        public virtual Categoria Categoria{ get; set; }
+        [DisplayName("Categoria do Produto")]
         public int CategoriaId { get; set; }
 
-        //Cliente para sobrescrever lazyload
-        public virtual Cliente Cliente { get; set; }
-        public int ClienteId { get; set; }
+        //Classes que serão sobrescritas
+        //public virtual Cliente Cliente { get; set; }
+        public virtual Vendedor Vendedor { get; set; }
+        //public virtual Mensagem Mensagem { get; set; }
+        public virtual Categoria Categoria { get; set; }
+
+        //Grava Id Cliente no momento ca Compra
+        //[ScaffoldColumn(false)]
+        //public int ClienteId { get; set; }
+
+        //Grava Id no momento do Input do vendedor
+        [ScaffoldColumn(false)]
+        public int VendedorId { get; set; }
+
+        //Grava Id da mensagem associada ao produto
+        //[ScaffoldColumn(false)]
+        //public int MensagenId { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

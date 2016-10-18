@@ -1,0 +1,33 @@
+﻿@using WEB.Ecommerce.Controllers
+
+@functions {
+    public object AccountController { get; set; }
+}
+@*@model WEB.Ecommerce.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}*@
+<h2>@ViewBag.Title</h2>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-6">
+
+            @{Html.RenderAction("Login", "Account", new { controller = AccountController });}
+
+        </div> @* Fim div Col-md-6 *@
+        @*<hr/>*@
+        <div class="col-md-6">
+
+            @{Html.RenderAction("Register", "Account", new { controller = AccountController });}
+           
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

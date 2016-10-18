@@ -26,17 +26,17 @@
             @Html.DisplayFor(model => model.Produto.Nome)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Quantidade)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Quantidade)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CarrinhoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarrinhoId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary" })
 </p>

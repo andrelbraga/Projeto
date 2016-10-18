@@ -201,7 +201,9 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MensagemController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
+    <Compile Include="Controllers\VendedorController.cs" />
     <Compile Include="Data\DataContexto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,17 +214,22 @@
     <Compile Include="Models\Carrinho.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\DbInitializer.cs" />
     <Compile Include="Models\Grupo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LogAttribute.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Vendedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\shop-homepage.css" />
@@ -264,6 +271,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -323,16 +338,32 @@
     <Content Include="Views\Categorias\Index.cshtml" />
     <Content Include="Views\Produtos\CategoriasMenu.cshtml" />
     <Content Include="Views\Produtos\Browse.cshtml" />
-    <Content Include="Views\Produtos\Create.cshtml" />
     <Content Include="Views\Produtos\Delete.cshtml" />
-    <Content Include="Views\Produtos\Details.cshtml" />
     <Content Include="Views\Produtos\Edit.cshtml" />
-    <Content Include="Views\Produtos\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Carrinho\Adcionar.cshtml" />
     <Content Include="Views\Carrinho\Delete.cshtml" />
     <Content Include="Views\Carrinho\Details.cshtml" />
     <Content Include="Views\Carrinho\Edit.cshtml" />
+    <Content Include="Views\Carrinho\Index1.cshtml" />
+    <Content Include="Views\Vendedor\Create.cshtml" />
+    <Content Include="Views\Vendedor\Delete.cshtml" />
+    <Content Include="Views\Vendedor\Details.cshtml" />
+    <Content Include="Views\Vendedor\Edit.cshtml" />
+    <Content Include="Views\Vendedor\Index.cshtml" />
+    <Content Include="Views\Mensagem\Create.cshtml" />
+    <Content Include="Views\Mensagem\Delete.cshtml" />
+    <Content Include="Views\Mensagem\Details.cshtml" />
+    <Content Include="Views\Mensagem\Edit.cshtml" />
+    <Content Include="Views\Mensagem\Index1.cshtml" />
+    <Content Include="Views\Produtos\Create.cshtml" />
+    <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\Vendedor\Control.cshtml" />
+    <Content Include="Views\Clientes\Control.cshtml" />
+    <Content Include="Views\Produtos\CategoriasVendedor.cshtml" />
+    <Content Include="Views\Produtos\Details.cshtml" />
+    <Content Include="Views\Mensagem\Index.cshtml" />
+    <Content Include="Views\Account\Principal.cshtml" />
     <Content Include="Views\Carrinho\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -340,9 +371,6 @@
     <Folder Include="System\Data\Entity\Migrations\Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

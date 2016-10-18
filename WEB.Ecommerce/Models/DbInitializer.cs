@@ -41,6 +41,20 @@ namespace WEB.Ecommerce.Models
             clientes.ForEach(x => context.Cliente.Add(x));
             context.SaveChanges();
 
+
+            var vendedor = new List<Vendedor>
+            {
+                new Vendedor() { Nome = "Andre Braga", Email = "dnk_vip@hotmail.com", Status = true },
+                new Vendedor() { Nome = "Goku", Email = "Picollo@hotmail.com", Status = true },
+                new Vendedor() { Nome = "Picollo", Email = "Goku@hotmail.com", Status = true },
+                new Vendedor() { Nome = "Vegeta", Email = "Vegeta@hotmail.com", Status = true },
+                new Vendedor() { Nome = "Curirin", Email = "Curirin@hotmail.com", Status = true },
+                new Vendedor() { Nome = "Kamesama", Email = "Kamesama@hotmail.com", Status = true },
+            };
+
+            vendedor.ForEach(x => context.Vendedor.Add(x));
+            context.SaveChanges();
+
             var produtos = new List<Produto>
             {   new Produto()
                 {
@@ -50,7 +64,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Moveis/moveis2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Móveis e Decorações").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -60,7 +75,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Moveis/moveis1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Móveis e Decorações").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -70,7 +86,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Livros/livros2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Livros").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
                 new Produto()
@@ -81,7 +98,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Livros/livros1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Livros").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
                 new Produto()
@@ -92,7 +110,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Instumentos/instumentos1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Produtos musicais").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
                 new Produto()
@@ -103,7 +122,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Informatica/informatica1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Informatica").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
 
@@ -115,7 +135,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Games/games2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Games").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -125,7 +146,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Games/games1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Games").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -135,7 +157,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Filmes/filmes2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Filmes e Seriados").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
                 new Produto()
@@ -146,7 +169,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Filmes/filmes1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Filmes e Seriados").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -156,7 +180,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Eletrodomesticos/eletrodomestico2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Eletrodoméstico").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -166,7 +191,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Eletrodomesticos/eletrodomesticos.jpg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Eletrodoméstico").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                 //   ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
@@ -176,17 +202,16 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Brinquedos/brinquedos2.jpg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Brinquedos e Hobbies").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                  //  ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
                 new Produto()
                 {
                     Nome = "Pula pirata",
                     Descricao = "Pula Pirata",
                     Preco = 1200,
-                    ImageUrl="/Imagens/Brinquedos/brinquedos1.jpeg",
-                    Status = true,
-                    CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Brinquedos e Hobbies").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
                 new Produto()
@@ -197,7 +222,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Automoveis/automoveis2.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Carro,Motos e Automoveis").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 }, 
 
 
@@ -209,7 +235,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="/Imagens/Automoveis/automoveis1.jpeg",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Carro,Motos e Automoveis").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 },
                 new Produto()
                 {
@@ -219,7 +246,8 @@ namespace WEB.Ecommerce.Models
                     ImageUrl="",
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Eletrodoméstico").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 },
                 new Produto()
                 {
@@ -228,7 +256,8 @@ namespace WEB.Ecommerce.Models
                     Preco = 1200,
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Eletrodoméstico").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Picollo").ClienteId,
+                    //ClienteId = clientes.SingleOrDefault(x => x.Nome == "Picollo").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 },
 
                 new Produto()
@@ -238,7 +267,8 @@ namespace WEB.Ecommerce.Models
                     Preco = 1200,
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Games").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Vegeta").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Vegeta").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 },
                 new Produto()
                 {
@@ -247,7 +277,8 @@ namespace WEB.Ecommerce.Models
                     Preco = 1200,
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Games").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Curirin").ClienteId,
+                   // ClienteId = clientes.SingleOrDefault(x => x.Nome == "Curirin").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
                 },
 
                 new Produto()
@@ -257,12 +288,31 @@ namespace WEB.Ecommerce.Models
                     Preco = 1200,
                     Status = true,
                     CategoriaId = categorias.SingleOrDefault(x => x.Tipo == "Informatica").CategoriaId,
-                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Kamesama").ClienteId,
+                  //  ClienteId = clientes.SingleOrDefault(x => x.Nome == "Kamesama").ClienteId,
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Kamesama").VendedorId,
+
                 },
             };
 
             produtos.ForEach(x => context.Produto.Add(x));
             context.SaveChanges();
+
+            var msg = new List<Mensagem>()
+            {
+                new Mensagem()
+                {
+                    ClienteId = clientes.SingleOrDefault(x => x.Nome == "Goku").ClienteId,
+                    Texto = "Produto de pessima qualidade.",
+                    Titulo = "Produto",
+                    VendedorId = vendedor.SingleOrDefault(x => x.Nome == "Goku").VendedorId,
+                    ProdutoId = produtos.SingleOrDefault(x => x.Nome == "Notebook").ProdutoId,
+                },
+            };
+
+            msg.ForEach(x => context.Mensagem.Add(x));
+            context.SaveChanges();
+
+
             //InitializeDatabase(context);
 
         }

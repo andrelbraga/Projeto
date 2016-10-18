@@ -4,8 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using WEB.Ecommerce.Data;
 using WEB.Ecommerce.Models;
 
@@ -16,20 +19,43 @@ namespace WEB.Ecommerce.Controllers
         private DataContexto db = new DataContexto();
 
         // GET: Carrinho
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+
+            ViewBag.Model = new Produto();
+
+            var usuario = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var ClienteCorrent = usuario.FindByEmail(User.Identity.Name).Cliente;
+
+            if (ClienteCorrent)
+            {
+                var NomeC = usuario.FindByEmail(User.Identity.Name).NomeUsuario;
+                List<Cliente> client = db.Cliente.Where(x => x.Nome == NomeC).ToList();
+                var carrinh = db.Carrinho.Where(x => x.Cliente.Nome == id).ToList();
+                if (carrinh != null)
+                {
+                    var carrinhoo = db.Carrinho.Include(c => c.Cliente).Include(c => c.Produto).Where(x => x.Cliente.Nome == id).ToList();
+                    return View(carrinhoo.ToList());
+                }
+            }
+            
+
             var carrinho = db.Carrinho.Include(c => c.Cliente).Include(c => c.Produto);
             return View(carrinho.ToList());
         }
 
         // GET: Carrinho/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int cliente, int produto)
         {
+            Carrinho carrinho = db.Carrinho.Find(id);
+            carrinho.ClienteId = cliente;
+            carrinho.ProdutoId = produto;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Carrinho carrinho = db.Carrinho.Find(id);
+            
             if (carrinho == null)
             {
                 return HttpNotFound();
@@ -38,31 +64,31 @@ namespace WEB.Ecommerce.Controllers
         }
 
         // GET: Carrinho/Create
-        public ActionResult Create()
-        {
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome");
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome");
+        //    ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome");
+        //    return View();
+        //}
 
         // POST: Carrinho/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CarrinhoId,ClienteId,ProdutoId,Quantidade,DataCadastro")] Carrinho carrinho)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Carrinho.Add(carrinho);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "CarrinhoId,ClienteId,ProdutoId,Quantidade,DataCadastro")] Carrinho carrinho)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Carrinho.Add(carrinho);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome", carrinho.ClienteId);
-            ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome", carrinho.ProdutoId);
-            return View(carrinho);
-        }
+        //    ViewBag.ClienteId = new SelectList(db.Cliente, "ClienteId", "Nome", carrinho.ClienteId);
+        //    ViewBag.ProdutoId = new SelectList(db.Produto, "ProdutoId", "Nome", carrinho.ProdutoId);
+        //    return View(carrinho);
+        //}
 
         // GET: Carrinho/Edit/5
         public ActionResult Edit(int? id)
@@ -146,11 +172,18 @@ namespace WEB.Ecommerce.Controllers
 
         }
 
-        public ActionResult Criar(int idCliente, int idProduto)
+
+        //Quando Cliente adciona produto no carrinho
+        public ActionResult Criar(int idProduto)
         {
             Carrinho carr = new Carrinho();
 
-            carr.ClienteId = idCliente;
+            UserManager<ApplicationUser> id = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            string nome = id.FindByName(User.Identity.Name).NomeUsuario;
+            Cliente input = db.Cliente.FirstOrDefault(x => x.Nome == nome);
+            carr.ClienteId = input.ClienteId;
+
+            
             carr.ProdutoId = idProduto;
             db.Carrinho.Add(carr);
             db.SaveChanges();

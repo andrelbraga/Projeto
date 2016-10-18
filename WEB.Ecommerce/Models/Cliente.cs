@@ -10,34 +10,33 @@ namespace WEB.Ecommerce.Models
         [Key]
         public int ClienteId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o Nome")]
+        [DisplayName("Preencha o Nome")]
         public string Nome { get; set; }
 
-        //[Required(ErrorMessage = "Preencha o Sobreome")]
-        //public string Sobrenome { get; set; }
+        [DisplayName("Preencha o Sobreome")]
+        public string Sobrenome { get; set; }
 
-        [EmailAddress(ErrorMessage = "Preencha o Email valido")]
-        [DisplayName("E-mail")]
+        [DisplayName("Preencha o CEP")]
         public string Email { get; set; }
 
-        //[Required(ErrorMessage = "Preencha o CPF")]
-        //public string Cpf { get; set; }
+        [DisplayName("Preencha o CPF")]
+        public string Cpf { get; set; }
 
-        //public string Celular { get; set; }
+        [DisplayName("Celular")]
+        public string Celular { get; set; }
 
-        //[Required(ErrorMessage = "Preencha o CEP")]
-        //public string Cep { get; set; }
+        [DisplayName("Preencha o CEP")]
+        public string Cep { get; set; }
 
         [DisplayName("Disponivel?")]
         public bool Status { get; set; }
         
 
         //Classe cliente tem uma coleção de produtos
-        public virtual IEnumerable<Produto> Produtos { get; set; }
+        public virtual IEnumerable<Produto> Produto { get; set; }
+        //Classe Cliente tem uma coleção de Mensagens
+        public virtual IEnumerable<Mensagem> Mensagem { get; set; }
 
-        //Grupo
-        //public int GrupoId { get; set; }
-        //public virtual Grupo Grupo { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

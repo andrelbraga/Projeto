@@ -1,0 +1,23 @@
+﻿@model System.Collections.Generic.IEnumerable<WEB.Ecommerce.Models.Produto>
+@{
+    ViewBag.Title = "Browse";
+}
+<h2>Browse</h2>
+
+<div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="caption">
+                        <h4>
+                            <a href="#">@Html.ActionLink(item.Nome, "Details", new { ID = item.ProdutoId })</a>
+                        </h4>
+                        <p>@item.Descricao</p>
+                    </div>
+            </div>
+
+        }
+    </div>
+</div>
+

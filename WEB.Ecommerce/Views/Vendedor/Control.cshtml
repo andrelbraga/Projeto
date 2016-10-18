@@ -1,0 +1,77 @@
+﻿@using System.Web.Mvc.Html
+@using WEB.Ecommerce.Models
+@model WEB.Ecommerce.Models.Vendedor
+
+@{
+    ViewBag.Title = "Painel de Controle";
+}
+
+
+<h2>@ViewBag.Title</h2>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <h4>Vendedor</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+                </dl>
+            </div> 
+        </div> @* Fim div Col-md-6 *@
+        
+        @Html.ActionLink("Novo Produto", "Create", new { @class = "btn btn-default btn-primary" })
+        
+
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <h4>Change your account settings</h4>
+
+        <hr />
+        <div class="col-md-6">
+            <div class="row">
+                
+                
+                @*Carregar View parcial com produtos cadastrados*@
+
+                @{Html.RenderAction("CategoriasVendedor", "Produtos", new {id = Model.VendedorId});}
+                @Html.ActionLink("Meus Produtos", "Index", "Produtos", new { id = Model.VendedorId }, new { @class = "btn btn-default btn-danger" })
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VendedorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using WEB.Ecommerce.Data;
 using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Controllers
@@ -17,9 +19,16 @@ namespace WEB.Ecommerce.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private DataContexto db = new DataContexto();
 
         public AccountController()
         {
+        }
+
+        [AllowAnonymous]
+        public ActionResult Principal(RegisterViewModel model)
+        {
+            return View(model);
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -68,9 +77,30 @@ namespace WEB.Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
+            Vendedor vend = new Vendedor();
+            List<Vendedor> vendedor = new List<Vendedor>();
+            vendedor = db.Vendedor.Where(x => x.Email == model.Email).ToList();
+
+            Cliente clid = new Cliente();
+            List<Cliente> cliente = new List<Cliente>();
+            cliente = db.Cliente.Where(x => x.Email == model.Email).ToList();
+            
+
             if (!ModelState.IsValid)
             {
-                return View(model);
+
+                if (cliente != null)
+                {
+                    return RedirectToAction("Control", "Clientes", new {id = clid.ClienteId});
+                } 
+                
+                if (vendedor != null)
+                {
+                    return RedirectToAction("Control", "Vendedor", new { id = vend.VendedorId });
+                }
+                
+                
             }
 
             // This doesn't count login failures towards account lockout
@@ -146,7 +176,7 @@ namespace WEB.Ecommerce.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -159,7 +189,62 @@ namespace WEB.Ecommerce.Controllers
                     UserName = model.Email,
                     Email = model.Email
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                //Caso for incluir um Vendedor
+                IdentityResult result;
+                if (model.Vendedor)
+                {
+                    Vendedor vendedor = new Vendedor();
+                    vendedor.Nome = model.NomeUsuario;
+                    vendedor.Email = model.Email;
+                    vendedor.Status = true;
+                    db.Vendedor.Add(vendedor);
+                    db.SaveChanges();
+
+                    result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Control", "Vendedor", new { id = vendedor.VendedorId });
+                    }
+                    AddErrors(result);
+
+                    
+                }
+                //Caso incluir um cliente
+                if (model.Cliente)
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.Nome = model.NomeUsuario;
+                    cliente.Email = model.Email;
+                    cliente.Status = true;
+                    db.Cliente.Add(cliente);
+                    db.SaveChanges();
+
+                    result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Control", "Clientes", new { id = cliente.ClienteId });
+                    }
+                    AddErrors(result);
+                }
+
+
+                result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -398,6 +483,8 @@ namespace WEB.Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            
+            string co = DefaultAuthenticationTypes.ApplicationCookie.ToString();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

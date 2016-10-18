@@ -14,10 +14,7 @@ namespace WEB.Ecommerce.Models
         public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
 
-        public int Quantidade { get; set; }
-
         public virtual IEnumerable<Produto> Produtos { get; set; }
-        public virtual IEnumerable<Cliente> Clientes { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }

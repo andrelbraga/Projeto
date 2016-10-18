@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using WEB.Ecommerce.Data
+@using WEB.Ecommerce.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,7 +15,168 @@
     <!-- Custom CSS -->
     <link href="../../Content/shop-homepage.css" rel="stylesheet">
 
+    <style>
+.btn-btn-primary{
+    border-radius: 0px;
+    background-color: white;
+    border: 1px solid #CCC;
+}
 
+.btn-btn-primary.focus, .btn-btn-primary:focus, .btn-btn-primary:hover{
+    background-color: #F5F5F5;
+    color: #333333;
+    border: 1px solid #CCC; 
+}
+.form-control{
+    border-radius:0px;
+    -webkit-box-shadow: none;
+
+}
+.btn{border-radius:0px;}
+label {
+    font-weight:400 !important;
+    color: #333333;
+}
+
+.dropdown-acoes {
+                    font-family: "Open Sans";
+	                font-size: 13px;
+	                font-style:normal;
+	                font-variant:normal;
+	                font-weight: 400;
+	                line-height: 18.5714px;
+                    color: #333333;
+                    background-color:#066783;
+                    box-shadow: none;
+                    border-radius: 0;
+                    border: 1px solid #066783;                   
+            }
+
+.tab-content{
+    border-left: 1px solid #CCC;  
+    border-right: 1px solid #CCC; 
+    border-bottom: 1px solid #CCC; 
+}
+
+.tab-sefaz{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.btn-salvar{
+    background-color: #066783;
+    color: white;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight:bold;
+}
+
+.btn-salvar.focus, .btn-salvar:focus, .btn-salvar:hover{
+    background-color: #CCC;
+    color: #333333;
+    border: 1px solid #CCC; 
+    font-weight:bold; 
+}
+
+
+.btn-cancelar{
+    background-color: #F5F5F5;
+    color: #333333;
+    border: 1px solid #CCC; 
+    font-weight:bold; 
+}
+
+.btn-cancelar.focus, .btn-cancelar:focus, .btn-cancelar:hover{
+    background-color: #F5F5F5;
+    color: #066783;
+    border: 1px solid #CCC; 
+    font-weight:bold; 
+}
+
+.dropdown-menu{
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.progress{
+    border-radius:0px;
+    box-shadow: none;
+
+}
+
+ div.browse-wrap {
+        top:0;
+        left:0;
+        cursor:pointer;
+        overflow:hidden;
+        text-align:center;
+        position:relative;
+        background-color:#f6f7f8;
+        border:dashed 1px #d2d2d7;}
+    .btn-upload {
+        color:#3b5998;
+        font-size:14px;
+        font-weight:bold;}
+    input.upload {
+        right:0;
+        margin:0;
+        bottom:0;
+        padding:0;
+        opacity:0;
+        height:300px;
+        outline:none;
+        cursor:inherit;
+        position:absolute;
+        font-size:1000px !important;}
+    span.upload-path {        
+        margin:20px;
+        display:block;
+        font-size: 80%;        
+        font-weight:bold;
+}
+
+.progress-bar{
+      color:black;
+}
+
+.angucomplete-dropdown {
+                overflow-y: auto;
+                max-height: 200px;
+}  
+
+.btn-icon{
+    cursor:pointer;
+    border:1px solid #CCC;
+    width:38px;
+    vertical-align: top;
+    padding-left:10px; 
+    top:0px;
+    padding-top:8px; 
+    height: 34px;
+   
+}
+
+.texto-zero{
+    font-size:12px;
+    color:#808080;
+    height:40px;
+    padding-top:15px;
+}
+
+.obrigatorio{color:red;}
+
+.margin-b-10{margin-bottom: 10px;}
+.margin-t-10{margin-top: 10px;}
+.margin-t-20{margin-top: 20px;}
+
+.modal-content{border-radius:0;}
+.modal-header{border-bottom: 0;}
+
+.input-group-sm>.form-control, .input-group-sm>.input-group-addon, .input-group-sm>.input-group-btn>.btn{
+    border-radius:0;
+    height:34px;
+}
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,10 +196,33 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contatos", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Carrinho", "Index", "Carrinho")</li>
+                    @*Validação para ver se é vendedor ou cliente **@
                     
+                    @{
+                        var usuario = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                        
+                        if (!string.IsNullOrEmpty(User.Identity.Name))
+                        {
+                            var ClienteCorrent = usuario.FindByEmail(User.Identity.Name).Cliente;
+                            if (ClienteCorrent)
+                            {
+                                var N = usuario.FindByEmail(User.Identity.Name).NomeUsuario;
+                                <li>@Html.ActionLink("Carrinho", "Index", new { Controller = "Carrinho", id = N })</li>
+                            }
+
+                            var VendedorCorrent = usuario.FindByEmail(User.Identity.Name).Vendedor;
+                            if (VendedorCorrent)
+                            {
+                                <li>@Html.ActionLink("Mensagens", "Index", "Mensagem")</li>
+                            }
+
+                        }
+
+                    }
+
+
                 </ul>
-                
+
                 @Html.Partial("_LoginPartial")
 
             </div>

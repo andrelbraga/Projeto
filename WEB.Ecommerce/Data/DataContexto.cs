@@ -16,7 +16,6 @@ namespace WEB.Ecommerce.Data
 
         public DataContexto() : base("DataContexto")
         {
-            
         }
 
         public DbSet<Cliente> Cliente { get; set; }
@@ -25,6 +24,9 @@ namespace WEB.Ecommerce.Data
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Grupo> Grupo { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<Mensagem> Mensagem { get; set; }
+        public DbSet<Compra> Compra { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -42,6 +44,13 @@ namespace WEB.Ecommerce.Data
 
             modelBuilder.Properties<string>()
                 .Configure(x => x.HasMaxLength(200));
+
+            modelBuilder.Entity<Produto>()
+                .Property(x => x.VendedorId)
+                .IsOptional();
+
+
+
         }
 
         public class ProdutoConfiguration : EntityTypeConfiguration<Produto>
@@ -58,19 +67,18 @@ namespace WEB.Ecommerce.Data
                     .IsRequired()
                     .HasMaxLength(200);
                 //Configuração que aponta para classe de produto e aponta para a Cliente Id
-                HasRequired(x => x.Cliente)
-                    .WithMany()
-                    .HasForeignKey(x => x.ClienteId);
+                
+
                 //Teste para verificar se da para inserir produto sem ter vinculo com Cliente
 
             }
         }
-
         public class CarrinhoConfiguration : EntityTypeConfiguration<Carrinho>
         {
             public CarrinhoConfiguration()
             {
                 HasKey(x => x.CarrinhoId);
+
 
                 //HasRequired(x => x.Cliente)
                 //    .WithMany()
@@ -83,7 +91,6 @@ namespace WEB.Ecommerce.Data
 
             }
         }
-
         public class ClienteConfiguration : EntityTypeConfiguration<Cliente>
         {
             public ClienteConfiguration()

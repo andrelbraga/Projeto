@@ -1,11 +1,11 @@
-﻿@model WEB.Ecommerce.Models.Produto
-
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using WEB.Ecommerce.Models
+@model WEB.Ecommerce.Models.Produto
 @{
     ViewBag.Title = "Details";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>Produto</h4>
     <hr />
@@ -13,79 +13,74 @@
         <dt>
             @Html.DisplayNameFor(model => model.Categoria.Tipo)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Categoria.Tipo)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cliente.Nome)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Nome)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Descricao)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Descricao)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageFile)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageFile)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageMimeType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageMimeType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Preco)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Preco)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Status)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Status)
         </dd>
-
     </dl>
 </div>
+
+<img width="200" src="@Url.Action("GetImage", "Produtos", new { id=Model.VendedorId })" />
+
+@if (Model.ImageUrl != null)
+{
+    <img width="200" src="@Model.ImageUrl" alt=@Model.Descricao>
+}
+else
+{
+    @: ulr image not available
+}
+
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoId }, new { @class = "btn" }) |
-    @Html.ActionLink("Listar", "Index", new { @class = "btn" }) |
-    @Html.ActionLink("Adcionar a o Carrinho", "Criar", new { Controller = "Carrinho", idCliente = Model.ClienteId, idProduto = Model.ProdutoId})
+
+
+    @{
+        var usuario = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+        if (!string.IsNullOrEmpty(User.Identity.Name))
+        {
+            var ClienteCorrent = usuario.FindByEmail(User.Identity.Name).Cliente;
+
+            if (ClienteCorrent)
+            {
+                @Html.ActionLink("Adcionar a o Carrinho", "Criar", new { Controller = "Carrinho", idProduto = Model.ProdutoId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Mensagens", "Create", "Mensagem", new { @class = "btn btn-primary" })
+            }
+
+            var VendedorCorrent = usuario.FindByEmail(User.Identity.Name).Vendedor;
+            if (VendedorCorrent)
+            {
+                <li>@Html.ActionLink("Editar", "Edit", new { id = Model.ProdutoId }, new { @class = "btn btn-primary" })</li>
+                <li>@Html.ActionLink("Listar", "Index", new { @class = "btn btn-primary" })</li>
+                <li>@Html.ActionLink("Mensagens", "Index", "Mensagem", new { @class = "btn btn-primary" })</li>
+            }
+
+        }
+
+    }
+
 </p>
+

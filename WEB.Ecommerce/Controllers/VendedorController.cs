@@ -11,31 +11,30 @@ using WEB.Ecommerce.Models;
 
 namespace WEB.Ecommerce.Controllers
 {
-    public class ClientesController : Controller
+    public class VendedorController : Controller
     {
         private DataContexto db = new DataContexto();
 
-        // GET: Clientes
+        // GET: Vendedor
         public ActionResult Index()
         {
-            return View(db.Cliente.ToList());
+            return View(db.Vendedor.ToList());
         }
 
-        // GET: Clientes/Details/5
+        // GET: Vendedor/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Vendedor vendedor = db.Vendedor.Find(id);
+            if (vendedor == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(vendedor);
         }
-
 
         public ActionResult Control(int? id)
         {
@@ -43,90 +42,90 @@ namespace WEB.Ecommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Vendedor vendedor = db.Vendedor.Find(id);
+            if (vendedor == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(vendedor);
         }
 
-        // GET: Clientes/Create
+        // GET: Vendedor/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Clientes/Create
+        // POST: Vendedor/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClienteId,Nome,Email,Status,DataCadastro")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "VendedorId,Nome,Email,Status,DataCadastro")] Vendedor vendedor)
         {
             if (ModelState.IsValid)
             {
-                db.Cliente.Add(cliente);
+                db.Vendedor.Add(vendedor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(cliente);
+            return View(vendedor);
         }
 
-        // GET: Clientes/Edit/5
+        // GET: Vendedor/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Vendedor vendedor = db.Vendedor.Find(id);
+            if (vendedor == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(vendedor);
         }
 
-        // POST: Clientes/Edit/5
+        // POST: Vendedor/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClienteId,Nome,Email,Status,DataCadastro")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "VendedorId,Nome,Email,Status,DataCadastro")] Vendedor vendedor)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
+                db.Entry(vendedor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(cliente);
+            return View(vendedor);
         }
 
-        // GET: Clientes/Delete/5
+        // GET: Vendedor/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
+            Vendedor vendedor = db.Vendedor.Find(id);
+            if (vendedor == null)
             {
                 return HttpNotFound();
             }
-            return View(cliente);
+            return View(vendedor);
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Vendedor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cliente cliente = db.Cliente.Find(id);
-            db.Cliente.Remove(cliente);
+            Vendedor vendedor = db.Vendedor.Find(id);
+            db.Vendedor.Remove(vendedor);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
